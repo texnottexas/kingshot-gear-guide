@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data: https://www.gstatic.com https://fonts.gstatic.com https://translate.googleapis.com https://translate.google.com https://www.google.com; style-src 'unsafe-inline' https://fonts.googleapis.com https://www.gstatic.com https://translate.googleapis.com; script-src 'self' 'unsafe-inline' https://translate.googleapis.com https://translate.google.com https://translate-pa.googleapis.com https://www.gstatic.com; font-src https://fonts.gstatic.com; connect-src 'self' https://translate.googleapis.com https://translate-pa.googleapis.com https://translate.google.com; frame-src 'self' https://translate.google.com; object-src 'none'; base-uri 'self'; form-action 'none';">
 <title>How to Gear - A Kingshot Forging Codex</title>
 <meta name="description" content="A complete Kingshot gearing guide: forging priority, imbuement, the 3-gear-set rule, troop priorities, governor gear and charms. Scribed by Summer, [ABG], Kingdom 356.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -88,8 +89,8 @@ a{color:inherit}
 
 /* ============ sticky chapter bar ============ */
 #bar{position:fixed;top:0;left:0;right:0;z-index:110;
-  display:flex;align-items:center;gap:1.1rem;
-  padding:.55rem clamp(1rem,4vw,2.2rem);padding-right:clamp(4.6rem,9vw,6.2rem);
+  display:flex;align-items:center;gap:1.1rem;min-height:46px;
+  padding:.5rem clamp(1rem,4vw,2.2rem);padding-right:clamp(4.6rem,9vw,6.2rem);
   background:oklch(0.18 0.02 55 / .9);
   backdrop-filter:blur(10px) saturate(1.2);
   border-bottom:1px solid oklch(0.74 0.13 73 / .28);
@@ -216,7 +217,7 @@ hr.rule{border:none;height:1px;margin:2.6rem 0;
   min-width:1.5ch;text-align:center;opacity:.85}
 .step .ico{width:54px;height:54px;flex:none;object-fit:contain;
   filter:drop-shadow(0 4px 6px oklch(0.3 0.05 50 / .35))}
-.step .nm{font-weight:600;font-size:1.02rem;line-height:1.15;color:var(--ink)}
+.step .nm{flex:1;min-width:0;overflow-wrap:break-word;font-weight:600;font-size:1.02rem;line-height:1.15;color:var(--ink)}
 .step .nm small{display:block;font-size:.74rem;color:var(--ink-faint);font-weight:400;font-style:italic}
 
 .mithril-call{margin-top:1.8rem;display:flex;align-items:center;gap:1.4rem;
@@ -229,8 +230,8 @@ hr.rule{border:none;height:1px;margin:2.6rem 0;
 .mithril-call .tx h4{font-family:"Cinzel";font-size:1.15rem;letter-spacing:.04em;color:#fff;margin-bottom:.2rem}
 .mithril-call .tx b{color:oklch(0.86 0.11 235)}
 .mithril-call .rk{font-family:"Cinzel";font-weight:800;font-size:1.5rem;color:oklch(0.8 0.1 235);opacity:.9}
-@media(max-width:680px){.path{grid-template-columns:1fr 1fr}.step .nm{font-size:.92rem}}
-@media(max-width:430px){.path{grid-template-columns:1fr}}
+@media(max-width:680px){.path{grid-template-columns:1fr 1fr}.step .nm{font-size:.92rem}.step .ico{width:46px;height:46px}.step{gap:.65rem;padding:.6rem .7rem}}
+@media(max-width:560px){.path{grid-template-columns:1fr}.step .ico{width:50px;height:50px}.step{gap:.85rem}}
 
 /* ============ §2 FUNDAMENTALS ============ */
 .split{display:grid;grid-template-columns:1.25fr .95fr;gap:var(--gap);align-items:start}
@@ -429,14 +430,14 @@ body > .skiptranslate{display:none !important}
 .goog-te-banner-frame.skiptranslate{display:none !important}
 #google_translate_element{position:absolute;left:-9999px;top:-9999px;width:1px;height:1px;opacity:0;overflow:hidden;pointer-events:none}
 
-.lang-fab{position:fixed;top:.7rem;right:clamp(.8rem,3vw,1.4rem);z-index:130;
+.lang-fab{position:fixed;top:23px;right:clamp(.8rem,3vw,1.4rem);z-index:130;transform:translateY(-50%);
   display:inline-flex;align-items:center;gap:.45rem;cursor:pointer;
   font-family:"Cinzel",serif;font-weight:700;font-size:.78rem;letter-spacing:.08em;
   color:var(--iron);background:linear-gradient(180deg,var(--gold-bright),var(--gold));
   border:1px solid var(--gold-deep);border-radius:999px;padding:.4rem .72rem;
   box-shadow:0 4px 14px -5px oklch(0.25 0.06 50 / .8), inset 0 1px 0 #fff8;
   transition:transform .25s var(--ease), box-shadow .25s var(--ease)}
-.lang-fab:hover{transform:translateY(-1px);box-shadow:0 9px 22px -7px oklch(0.25 0.06 50 / .85), inset 0 1px 0 #fff9}
+.lang-fab:hover{transform:translateY(calc(-50% - 1px));box-shadow:0 9px 22px -7px oklch(0.25 0.06 50 / .85), inset 0 1px 0 #fff9}
 .lang-fab .flag{font-size:1.05rem;line-height:1}
 @media(max-width:600px){.lang-fab .code{display:none}.lang-fab{padding:.5rem .55rem}}
 
@@ -550,7 +551,7 @@ body > .skiptranslate{display:none !important}
       <div class="step" data-rv class="d2"><span class="rk">3</span><img class="ico" src="assets/ic-mythic-chest.png" alt=""><span class="nm">Mythic Gear Chest</span></div>
 
       <div class="grp-h" data-rv>Forge stock</div>
-      <div class="step" data-rv><span class="rk">4</span><img class="ico" src="assets/ic-forgehammer.png" alt=""><span class="nm">Forge&#8209;Hammers</span></div>
+      <div class="step" data-rv><span class="rk">4</span><img class="ico" src="assets/ic-forgehammer.png" alt=""><span class="nm">Forge-Hammers</span></div>
       <div class="step" data-rv class="d1"><span class="rk">5</span><img class="ico" src="assets/ic-satin.png" alt=""><span class="nm">Satin</span></div>
       <div class="step" data-rv class="d2"><span class="rk">6</span><img class="ico" src="assets/ic-artisan-visions.png" alt=""><span class="nm">Artisan Visions</span></div>
 
